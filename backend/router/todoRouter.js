@@ -37,7 +37,6 @@ router.route('/:id').delete((req, res) => {
 router.route('/:id').put((req, res) => {
   Todo.findById(req.params.id)
     .then(todo => {
-      console.log(req.body.status)
       todo.status = req.body.status
       todo.save()
         .then(() => res.json('Status update.'))
@@ -45,7 +44,7 @@ router.route('/:id').put((req, res) => {
     }
 
     )
-    .catch(err => res.status(400).json('Errorrrrr:' + err))
+    .catch(err => res.status(400).json('Bad error:' + err))
 })
 
 module.exports = router;
